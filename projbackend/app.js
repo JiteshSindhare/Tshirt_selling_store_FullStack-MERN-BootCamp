@@ -8,8 +8,7 @@ const cookieParser = require("cookie-parser");// check docs.
                                         //https://www.npmjs.com/package/cookie-parser
 const cors = require("cors"); // check docs https://www.npmjs.com/package/cors
 
-const authRoutes = require("./routes/auth");// telling where to take that
-                                        // from.
+const authRoutes = require("./routes/auth");// importing it from where we made it,
 /**
 mongoose.connect('URL', {useNewUrlParser: true,
  useUnifiedTopology: true});
