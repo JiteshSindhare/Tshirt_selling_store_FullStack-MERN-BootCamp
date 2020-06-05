@@ -52,6 +52,8 @@ const uuidv1 = require('uuid/v1');
           this.salt= uuidv1(); // we want to populate the salt which is getting passed as string 
                     // to encrypt. 
           this.encry_password= this.securePassword(password);
+          // we are entering password in this virtual field "password". then
+        // encry_password variable is getting a hashed value by the securePassword method.
       })
       .get(function(){
           return this.password
@@ -59,14 +61,14 @@ const uuidv1 = require('uuid/v1');
   
   // we are making a method in our schema to encrypt password which will be entered
   // by user and then store in our mongodb.
-  userSchema.method = {
+  userSchema.methods = {
       // we need a method which can match there hash value to check when
                 // we want to authenticate the user.
     authenticate: function(plainpassword){
         return this.securePassword(plainpassword) === this.encry_password
     },
     securePassword: function(plainpassword){
-        if(!password) return ""; // it is returning "" (empty) and in mongodb empty pass
+        if(!plainpassword) return ""; // it is returning "" (empty) and in mongodb empty pass
                                 // cannot be stored.
         try{
             // for the things in this block visit site: 

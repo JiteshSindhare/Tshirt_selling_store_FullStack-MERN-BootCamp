@@ -2,8 +2,17 @@
 
 var express = require('express');
 var router = express.Router();
-const {signout} = require("../controllers/auth");// remember .. is to go back in directory
+const { check, validationResult } = require('express-validator'); // check expres validator.
+const {signout,signup} = require("../controllers/auth");
+// remember .. is to go back in directory
 
+
+router.post("/signup",[
+    check("name","name should be atleast 3 char.").isLength({min : 3}),
+    check("email","email is required.").isEmail(),
+    check("password","should be atleast 3 char").isLength({min : 3}),
+    // we can define min and max both inside isLength({...}).
+],signup);
 //Example
 //In router.get("/signout",(req,res)=>{}); res is response, so we are 
 //sending a response if someone is visiting route /signout
