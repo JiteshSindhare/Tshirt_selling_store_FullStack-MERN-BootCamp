@@ -33,10 +33,10 @@ router.get("/signout",signout); // we can also repalce singout here
 // and put the value os signout here from (req,res) like shown
 //in example.
 
-router.get("/testroute", isSignedIn, (req,res)=>{
-    // this auth has holds an _id, which was given to the user while siginin
-    res.json(req.auth);// this auth is same as we spelled in userProperty of isSigned in auth.js of controller.
-});
+// router.get("/testroute", isSignedIn, (req,res)=>{
+//     // this auth has holds an _id, which was given to the user while siginin
+//     res.json(req.auth);// this auth is same as we spelled in userProperty of isSigned in auth.js of controller.
+// });
 
 module.exports = router; // links or resquest associated with the router
 // of this file are being thrown by the above code. then we need to import

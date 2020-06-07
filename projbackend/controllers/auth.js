@@ -118,3 +118,30 @@ exports.isSignedIn = expressJwt({
     //This method is a custom middleware and we are not writing "next()" here because
     // we are writing this in expressJwt and that already has a "next()" method.
 });
+
+exports.isAuthenticated = (req,res,next) => {
+ // this variable will check if variable is authenticated or not.
+// through the forntend we will setup a property which is "profile". this property is only 
+// going to be set if the user is logged in(that is if we have email or id of the user).
+// since we the _id we get in auth is the set after the user profile while logging in.
+// so to check if user has authorization on his/her own profile.
+// so req.profile is setup by frontend.
+// req.auth is being setup by the middleware above (isSignedIn).
+    let checker = req.profile && req.auth && req.profile._id===req.auth._id;
+    if(!checker){
+        return res.status(403).json({
+            error: "ACCESS DENIED"
+        });
+    }
+    next();
+};
+
+exports.isAdmin = (req,res,next) => {
+    // we check role , in user's database model.
+    if(req.profile.role===0){
+        return res.status(403).json({
+            error:"You are not Admin, Access denied."
+        })
+    }
+    next();
+}
