@@ -7,7 +7,9 @@ const {ObjectId} = mongoose.Schema; // this is used when we want to refer anothe
 // not a good idea to state two schema in one file but still.
 
 //.. There are 4 major ways of writing schemas.
-
+//To understand this open maybe flipkart/amazon and see cart, there see list of products
+// and each product has option to increase/decrease no. of that product, cost of that
+// product and then total price of all products etc.
 const ProductCartSchema = new mongoose.Schema({
     //this products are the products created in "product.js"
     product:{
@@ -29,7 +31,7 @@ const OrderSchema = new mongoose.Schema({
     amount: {type: Number},
     address: String,
     updated: Date,
-    user:{ // to map products to a user.
+    user:{ // to map products to a user, or say that this module/schema is dependent on user.
         type: ObjectId,
         ref: "User" // reference of a model we are refering an Object to.
     }
