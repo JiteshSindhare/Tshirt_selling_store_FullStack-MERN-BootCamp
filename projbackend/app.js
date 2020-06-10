@@ -10,7 +10,8 @@ const cors = require("cors"); // check docs https://www.npmjs.com/package/cors
 
 //My routes
 const authRoutes = require("./routes/auth");// importing it from where we made it,
-const userRoutes = require("./routes/user")
+const userRoutes = require("./routes/user");
+const categoryRoutes = require("./routes/category");
 /**
 mongoose.connect('URL', {useNewUrlParser: true,
  useUnifiedTopology: true});
@@ -43,6 +44,8 @@ app.use("/api",authRoutes); // since this is an authentication route
 // this below and above route will be like middleware.
 // those urls will be like /api/signup or anything that is coming from authRoutes or userRoutes.
 app.use("/api",userRoutes);
+app.use("/api",categoryRoutes);
+
 //PORT
  const port =process.env.PORT || 8000;
 

@@ -8,7 +8,7 @@ const {isSignedIn,isAuthenticated,isAdmin} = require("../controllers/auth")
 // which is coming up from the db. check below link to understand populate better
 // https://stackoverflow.com/questions/38051977/what-does-populate-in-mongoose-mean#:~:text=populate()%20function%20in%20mongoose,an%20object%20as%20an%20input.
 
-router.param("userId",getUserById);
+router.param("userId",getUserById);// thi .params is how we get a parameter from a URL.
 
 // this is like to get a user his/her profile, he should be signedin,authenticated.
 // both isSigned and isAuthenticated are middlewares so they can be inserted anywhere in the route.

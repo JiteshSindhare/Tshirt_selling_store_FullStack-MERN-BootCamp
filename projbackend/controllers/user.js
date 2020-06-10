@@ -116,7 +116,7 @@ exports.pushOrderInPurchaseList = (req,res,next)=>{
                     error:"Unable to save purchase list."
                 })
             }
-            next(); // means if there is no error then just handover the control to next thing/something else.
+                next(); // means if there is no error then just handover the control to next thing/something else.
             // does not make sense to return anything , coz we are just updating something in our User schema.
         }
     )
