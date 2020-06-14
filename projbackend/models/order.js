@@ -30,6 +30,11 @@ const OrderSchema = new mongoose.Schema({
     transaction_id:{},
     amount: {type: Number},
     address: String,
+    status: {
+        type: String,
+        default:"Recieved",
+        enum: ["Cancelled","Delivered","SHipped","Processing","Recieved"]
+    },
     updated: Date,
     user:{ // to map products to a user, or say that this module/schema is dependent on user.
         type: ObjectId,
