@@ -29,6 +29,7 @@ router.post("/signin",[ // keeping router func as post only, sicne in sign in
 //res.send("user signout");
 //So when somebody will go to route "/signout" we will send a callback
 // which is 2nd argument(arrow/lambda func or name of a func in below case).
+
 router.get("/signout",signout); // we can also repalce singout here
 // and put the value os signout here from (req,res) like shown
 //in example.

@@ -85,6 +85,7 @@ exports.signin = (req,res) =>{
             error: "Email and password do not match."
            })
         }
+        
     //if above two cases are fine then we can create token, based on any key value pair.
     const  token = jwt.sign({_id: user._id},process.env.SECRET)
     // put token in cookie, COOKIE is like a key:value pair.

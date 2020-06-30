@@ -1,3 +1,29 @@
 projbackend/node_modules/*
 projbackend/.env
 projbackend/tshirts/*
+
+
+#FRONTEND
+projfrontend/README.md
+projfrontend/.gitignore
+# dependencies
+projfrontend/node_modules
+projfrontend/.pnp
+projfrontend/.pnp.js
+
+# testing
+projfrontend/coverage
+
+# production
+projfrontend/build
+
+# misc
+projfrontend/.DS_Store
+/projfrontend.env.local
+projfrontend/.env.development.local
+projfrontend/.env.test.local
+projfrontend/.env.production.local
+
+npm-debug.log*
+projfrontend/yarn-debug.log*
+projfrontend/yarn-error.log*

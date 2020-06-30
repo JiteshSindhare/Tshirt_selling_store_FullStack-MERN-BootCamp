@@ -55,6 +55,6 @@ app.use("/api",orderRoutes);
 
  //Starting a server
  app.listen( port, () =>{
-     // to mention any variable inside backticks `` then we use ${}
+     // to mention any variable inside use backticks `` then we use ${}.
      console.log(`app is running at ${port} `);
  } );
