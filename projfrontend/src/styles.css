@@ -1,6 +1,8 @@
 .btn,
 .jumbotron,
 .nav :hover {
+  /* its just saying that button, jumbotron and nav:hover all this 
+  class/div/modules should have below styling. */
   border-radius: 0px;
 }
 
