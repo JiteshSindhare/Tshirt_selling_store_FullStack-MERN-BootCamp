@@ -1,4 +1,5 @@
 import React from 'react'
+import Menu from './Menu';
 
 // in a function or arrow function like below
 // if there is this {} bracket then return keyword is necessary.
@@ -14,6 +15,8 @@ const Base = ({
     // coz we are using {children} between title and footer in this file.
 }) => (
     <div>
+        {/* injected our Menu(nav) bar here. coz we want NavBar in all apge. */}
+        <Menu />
         <div className="container-fluid">
             <div className="jumbotron bg-dark text-white text-center">
             <h2 className="display-4">{title}</h2>
