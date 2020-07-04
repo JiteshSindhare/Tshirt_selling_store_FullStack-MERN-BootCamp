@@ -10,7 +10,7 @@ export default function Home(){
         // if we pass value like
         // <Base title="Home page" so the value of title written in argument of Base
         // base function in file Base.js it will be overriten.
-        <Base title="Home Page">
+        <Base title="Home Page" description="Welcome to home page">
             <div className="row">
                 <div className="col-4">
                     <button className="btn btn-success">TEST</button>
