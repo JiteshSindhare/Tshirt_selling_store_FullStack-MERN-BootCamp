@@ -143,6 +143,7 @@ const Signup=()=>{
             </div>
         </div>);
     };
+    
     return(
         <Base title="Sign up Page" 
         description= "A page with user to sign up!">
