@@ -68,6 +68,10 @@ export const authenticate = (data,next) =>{
     }
 }
 // so in signOut we access above object and remove jwt token from it.
+// notice since we have used next here, so it is a middleware.
+// so we are using it as middleware coz it allows us to give a callback and then
+// we can perform some extra functions after signing out.
+//  in this case after logging-Out we want to redirect user to home or login Page.
 export const signout= next => {
     if(typeof window !== "undefined"){
         // removing the jwt we set after signing In.

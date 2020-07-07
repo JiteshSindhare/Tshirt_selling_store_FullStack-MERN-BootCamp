@@ -13,8 +13,8 @@ const Signin=()=>{
     // didRedirect is for when user is successfully then we need to redirect
     // user somewhere probably to user/admin dashboard
     const [values,setValues] = useState({
-        email:"",
-        password:"",
+        email:"A@mail.com",
+        password:"12345",
         error:"",
         loading: false,
         didRedirect: false

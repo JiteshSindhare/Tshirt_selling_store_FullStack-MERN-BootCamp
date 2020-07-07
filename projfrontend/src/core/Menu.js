@@ -1,6 +1,6 @@
-import React from 'react'
+import React,{Fragment} from 'react'
 import {Link, withRouter} from "react-router-dom"
-
+import { signout, isAuthenticated } from "../auth/helper"
 
 const currentTab = (history,path)=>{
     if(history.location.pathname === path){
@@ -41,30 +41,69 @@ const currentTab = (history,path)=>{
                      Admin Dashboard
                  </Link>
              </li>
-             <li className="nav-item">
-                 <Link 
-                 style={currentTab(history,"/signup")}
-                 className="nav-link" to="/signup">
-                     Signup
-                 </Link>
-             </li>
-             <li className="nav-item">
-                 <Link 
-                 style={currentTab(history,"/signin")}
-                 className="nav-link" to="/signin">
-                     Sign In
-                 </Link>
-             </li>
-             <li className="nav-item">
-                 <Link 
-                 style={currentTab(history,"/signout")}
-                 className="nav-link" to="/signout">
-                     Sign Out
-                 </Link>
-             </li>
+             {!isAuthenticated() && (
+                <Fragment>
+                <li className="nav-item">
+                    <Link 
+                    style={currentTab(history,"/signup")}
+                    className="nav-link" to="/signup">
+                        Signup
+                    </Link>
+                </li>
+                <li className="nav-item">
+                    <Link 
+                    style={currentTab(history,"/signin")}
+                    className="nav-link" to="/signin">
+                        Sign In
+                    </Link>
+                </li>
+                </Fragment>
+             )}
+             {isAuthenticated() && (
+            <li className="nav-item">
+                <span
+                className="nav-link text-warning"
+                // can also do it like onCLick={signout()}
+                // since we ahv already imported signout
+                // but we won't do that here , since our signout mehtod
+                //  is like a middleware i.e. we can singout and then redirect user.
+                // onClick itself gives us a callback that we can fire directly, so we can use arrow function here.
+                onClick={() =>{
+                    // this callback in signout is coz , signout is a middleware i.e. it uses next
+                    // so after signout this arrow method inside that will run.
+                    signout( () => {
+                        // this is just telling to route to "/" i.e. home directory here.
+                        history.push("/")
+                    })
+                }}
+                >
+                    Signout
+                </span>
+            </li>
+             )}
          </ul>
      </div>     
  )
+
+/** NOTE: whenever we want to wrap anything :
+ * 1.>on to a block level - we use <div> </div>
+ * 2.> on to a line level - we use <span> </span>
+ * React.Fragment is almost like a div, it does not keep all elements inside it
+ * like div, but it is for multiple lines or components and keep them as it is.
+ * /
+
+/**
+ * we can also do conditional rendering of signout by something like this.
+ * if(isAuthenticated){
+ *  signout  
+ * } else {
+ *  "" }
+ * also using this way.
+ *  { isAuthenticated() && signout }
+ *  signout is a method ora component it will always be true since its something.
+ *  so it will show signout if it isAusthenticated otherwise not.
+ */
+
 
 
 //  wrapping it with Router coz we will be using it with router.
