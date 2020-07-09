@@ -11,8 +11,10 @@ body {
 }
 
 footer{
-  /* position: absolute; */
+  /* position:absolute; */
+  /* position: relative; */
   /* margin-bottom: 0px; */
+  /* margin-top:-150px; */
   bottom:0px;
   right:0px;
   left:0px;

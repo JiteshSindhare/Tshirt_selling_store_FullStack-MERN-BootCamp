@@ -10,7 +10,7 @@ const Base = ({
     className="bg-dark text-white py-4",
     children
     // when we use this children, then our Base component will act as an enclosing
-    // Parent. So whatever we will pass inside Base tag like we are doign in Home.js
+    // Parent. So whatever we will pass inside Base tag like we are doing in Home.js
     // so those content will act like children of Base, i.e. Base will encompass it.
     // coz we are using {children} between title and footer in this file.
 }) => (

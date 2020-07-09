@@ -7,7 +7,7 @@ import {API} from "../../backend"
 export const signup= user => {
     // 2nd argument of fetch is the things we want to pass to our backend.
     // in this page /signup.
-    // so basically 2nd argument is carryign baggage that we are taking while
+    // so basically 2nd argument is carrying baggage that we are taking while
     // making this request.
     return fetch(`${API}/signup`,{
         method: "POST",
@@ -100,6 +100,8 @@ export const isAuthenticated=()=>{
         // here if "jwt" is present in localstorage, then we are sending that token
         // to forntend. Then we will again check in our frontend if token is exactly
         // same as the user we are looking up for. then only it will be true.
+        // so it basically sends user and token to frontend(i.e. whereever
+        // we will use this method).
         return JSON.parse(localStorage.getItem("jwt"));
     }else{
         return false;

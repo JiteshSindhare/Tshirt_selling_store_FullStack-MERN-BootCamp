@@ -53,16 +53,15 @@ const Signin=()=>{
     };
 
     const performRedirect =() =>{
-    //TODO: do a redirection here.
 
         // This method will judge whether we should be making a redirect or not.
         if(didRedirect){
             // notice we are getting this user from isAuthenticated.
             if(user && user.role === 1 ){
                 // returning is bad idea here coz of protecting route.
-                return <p>redirect to admin. </p>
+                return <Redirect to="/admin/dashboard"/>;
             }else{
-                return <p>redirect to user dashboard.</p>
+                return <Redirect to="/user/dashboard"/>;
             }
         }
         if(isAuthenticated()){
