@@ -29,26 +29,26 @@ export const getCategories=()=>{
     return fetch(`${API}/categories`,{
         method:"GET"
     }).then(response=>{
-        return response.json()
+        return response.json();
     })
-    .catch(error=>console.log(error))
+    .catch(error=>console.log(error));
 };
 // Product calls
 
     // create product
-export const createProduct= (userId,token,product) => {
+export const createaProduct= (userId,token,product) => {
     // in this case product is not coming in json format so we can directly pass ot.
     return fetch(`${API}/product/create/${userId}`,{
         method:"POST",
-        header:{
+        headers:{
             Accept:"application/json",
             Authorization : ` Bearer ${token}`
         },
         body:product
     }).then(response=>{
-        return response.json()
+        return response.json();
     })
-    .catch(error=>console.log(error))
+    .catch(error=>console.log(error) );
 };
 
     // get All product.
@@ -67,7 +67,7 @@ export const deleteProduct= (userId,token,productId) => {
     // in this case product is not coming in json format so we can directly pass ot.
     return fetch(`${API}/product/${productId}/${userId}`,{
         method:"DELETE",
-        header:{
+        headers:{
             Accept:"application/json",
             Authorization : ` Bearer ${token}`
         }
@@ -97,7 +97,7 @@ export const updateProduct= (productId,userId,token,product) => {
     // check route of this update product in backend.
     return fetch(`${API}/product/create/${productId}/${userId}`,{
         method:"PUT",
-        header:{
+        headers:{
             Accept:"application/json",
             Authorization : ` Bearer ${token}`
         },

@@ -20,6 +20,7 @@ router.param("categoryId", getCategoryById);
 //actual routes goes here.
 // validated and authenticated users can only create category.
 //coz we are posting something in db. and using parameter userId coz we want to validate user.
+
 // CREATE route.
 router.post(
     "/category/create/:userId",

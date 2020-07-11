@@ -10,6 +10,8 @@ import AdminDashBoard from "./user/AdminDashBoard";
 import AddCategory from './admin/AddCategory';
 import ManageCategories from './admin/ManageCategories';
 import AddProduct from './admin/AddProduct';
+import ManageProducts from './admin/ManageProducts';
+import UpdateProduct from './admin/UpdateProduct';
 
 // can also make function and export in same line like below comment.
 // export default function Routes(){
@@ -33,6 +35,13 @@ const Routes = () => {
             <AdminRoute 
             path="/admin/create/product"
             exact component={AddProduct} />
+            <AdminRoute 
+            path="/admin/products"
+            exact component={ManageProducts} />
+            <AdminRoute 
+            // notice how a a productId is written here. (its not in backtick ofcoursee.)
+            path="/admin/product/update/:productId"
+            exact component={ UpdateProduct }/>
         </Switch>
         </BrowserRouter>
     );

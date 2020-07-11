@@ -8,7 +8,7 @@ import {signin, authenticate, isAuthenticated} from "../auth/helper"
 // to specify index.js
 const Signin=()=>{
 
-    // loading is forshowing loading messages to user
+    // loading is for showing loading messages to user
     // like, things are going on please have patience.
     // didRedirect is for when user is successfully then we need to redirect
     // user somewhere probably to user/admin dashboard
