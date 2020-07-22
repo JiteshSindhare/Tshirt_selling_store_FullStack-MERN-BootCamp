@@ -12,6 +12,7 @@ import ManageCategories from './admin/ManageCategories';
 import AddProduct from './admin/AddProduct';
 import ManageProducts from './admin/ManageProducts';
 import UpdateProduct from './admin/UpdateProduct';
+import UpdateCategory from './admin/UpdateCategory';
 
 // can also make function and export in same line like below comment.
 // export default function Routes(){
@@ -28,7 +29,9 @@ const Routes = () => {
             <Route path="/signin" exact component={Signin} />
             <PrivateRoute path="/user/dashboard" exact component={UserDashBoard} />
             <AdminRoute path="/admin/dashboard" exact component={AdminDashBoard} />
-            <AdminRoute path="/admin/create/category" exact component={AddCategory} />
+            <AdminRoute 
+            path="/admin/create/category" 
+            exact component={AddCategory} />
             <AdminRoute 
             path="/admin/categories" 
             exact component={ManageCategories} />
@@ -42,6 +45,9 @@ const Routes = () => {
             // notice how a a productId is written here. (its not in backtick ofcoursee.)
             path="/admin/product/update/:productId"
             exact component={ UpdateProduct }/>
+            <AdminRoute 
+            path="/admin/category/update/:categoryId"
+            exact component={ UpdateCategory }/>
         </Switch>
         </BrowserRouter>
     );

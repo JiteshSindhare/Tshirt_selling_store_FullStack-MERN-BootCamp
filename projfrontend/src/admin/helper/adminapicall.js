@@ -33,6 +33,46 @@ export const getCategories=()=>{
     })
     .catch(error=>console.log(error));
 };
+// get one category
+export const getCategory=(categoryId)=>{
+    return fetch(`${API}/category/${categoryId}`,{
+        method:"GET"
+        // even if we don't provide anything than it usually is GET method.
+    }).then(response=>{
+        return response.json()
+    })
+    .catch(error=>console.log(error))
+};
+// update category
+export const updateCategory =(categoryId,userId,token,category) =>{
+    console.log("sending this name of category",category);
+    return fetch(`${API}/category/${categoryId}/${userId}`,{
+        method:"PUT",
+        headers:{
+            Accept:"application/json",
+            "Content-Type":"application/json",
+            // it was not working until i had added above Content-Type line.
+            Authorization : `Bearer ${token}`
+        },
+        body:JSON.stringify(category)
+    }).then(response=>{
+        return response.json();
+    })
+    .catch(error=>console.log(error))
+};
+// delete category
+export const deleteCategory=(categoryId,userId,token)=>{
+    return fetch(`${API}/category/${categoryId}/${userId}`,{
+        method:"DELETE",
+        headers:{
+            Accept:"application/json",
+            Authorization:`Bearer ${token}`
+        }
+    }).then(response =>{
+        return response.json();
+    })
+};
+
 // Product calls
 
     // create product
@@ -93,9 +133,9 @@ export const updateProduct= (productId,userId,token,product) => {
     // productId is the product we want to update.
     // Product is the new information of the product.
     // in this case product is not coming in json format so we can directly pass ot.
-
+    // return fetch(`${API}/product/create/${productId}/${userId}`,{
     // check route of this update product in backend.
-    return fetch(`${API}/product/create/${productId}/${userId}`,{
+    return fetch(`${API}/product/${productId}/${userId}`,{
         method:"PUT",
         headers:{
             Accept:"application/json",

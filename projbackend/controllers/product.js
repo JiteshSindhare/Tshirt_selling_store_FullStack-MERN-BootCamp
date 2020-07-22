@@ -159,7 +159,7 @@ exports.updateProduct = (req,res) => {
         //remember we are getting this by the middleware method getproductById which is
         // getting called coz of presence of productId in URL. coz we hav eset router.params()
 
-    //Updation code
+        //Updation code
         //For _.extend,refer https://lodash.com/docs/4.17.15#assignIn
         // it will basically involve updated value and old values.
         product=_.extend(product,fields);

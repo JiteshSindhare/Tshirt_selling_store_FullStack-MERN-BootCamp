@@ -4,7 +4,13 @@ import { Link, Redirect } from 'react-router-dom'
 import { getCategories, getProduct , updateProduct } from './helper/adminapicall'
 import { isAuthenticated } from '../auth/helper'
 
-const UpdateProduct = () => {
+// whenever we want to extract a parameter or something form URL in react, we use
+// {match} this are actually props/properties that are coming up in the react.
+// also there is something like props.match.params.something.
+// notice in preload() and useEffect we are using match.params.productId 
+// since we are using it in preload() function to get a category and refill it. 
+// so that we can edit it.
+const UpdateProduct = ({match}) => {
 
     const {user,token} = isAuthenticated();
 
@@ -35,7 +41,7 @@ const UpdateProduct = () => {
 
     // preload is used to load all the categories before hand to show them in 
     // drop down menu.
-    const preload =(productId)=>{
+    const preload = productId =>{
         getProduct(productId).then(data=>{
             console.log(data);
             if(data.error){
@@ -56,21 +62,44 @@ const UpdateProduct = () => {
                 //  our form data is active and ready to be filled with value.
                 // new FormData() is given by react by default to initilize formdata.
                 console.log("--CATEGORIES:".categories);
+                // using this below preloadCategories() method we are now able to get 
+                // categories in our form, so that a user can change category 
+                // of product if required.
+                preloadCategories();
             }
         });
     };
 
+    const preloadCategories = () => {
+        getCategories().then(data =>{
+            if(data.error){
+                setValues({...values, error: data.error})
+            }else{
+                setValues({
+                  // we don't need to load all of the values in state since this
+                  // this method is particuluarly about category. so we are only
+                  // calling/updating categories.
+                    categories: data,
+                    formData: new FormData()
+                    // need to initialize this formData, otherwise this categories
+                    // will not populate in our form.
+                })
+            }
+        })
+    } 
     useEffect(() => {
-        preload();
+      // match has lot of things to extract, here we are extracting params.
+        preload(match.params.productId);
     }, []);
      
-    // TODO
+    // TODO: need some work in this method.
     const onSubmit = event =>{
       event.preventDefault();
         // setting error to initial state , coz probably there might be an existing 
         // submitted ofrm that might raise the error. so making error empty.
       setValues({...values, error:"", loading:true});
-      updateProduct(user._id, token, formData).then(data => {
+      // updateProduct method needs productId as well, see adminapicall.js
+      updateProduct(match.params.productId, user._id, token, formData).then(data => {
           console.log("print it------",data);
           if(data.error){
               setValues({...values, error: data.error });
@@ -124,7 +153,7 @@ const UpdateProduct = () => {
         // don't display anything.
         style={{ display: createdProduct ? "" : "none" }}
         >
-            <h4>{createdProduct} created successfully.</h4>
+            <h4>{createdProduct} Updated successfully.</h4>
         </div>
     );
 
@@ -212,7 +241,7 @@ const UpdateProduct = () => {
           <button type="submit" 
           onClick={onSubmit} 
           className="btn btn-outline-success mb-3">
-            Create Product
+            Update Product
           </button>
         </form>
       );

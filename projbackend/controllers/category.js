@@ -48,7 +48,6 @@ exports.updateCategory = (req,res)=>{
     const category = req.category; // we are able to get req.category coz of the middleware,getCategoryById which is getting executed coz of params in category.js routes.
     //editing category . name below then in category.save, saving that new name.
     category.name = req.body.name; // this req.body comes from frontend or postman. 
-
     category.save((err,updatedCategory)=>{
         if(err){
             return res.status(400).json({

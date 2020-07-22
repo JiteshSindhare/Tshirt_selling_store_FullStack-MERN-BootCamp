@@ -79,19 +79,22 @@ const AddProduct = () => {
                 //   check redirect.
                   getaRedirect: true,
               });
+              performRedirect();
           }
       });
     };
 
-    const performRedirect =() =>{
-            console.log(getaRedirect);
-            if(getaRedirect){
-            setTimeout(() =>{
-                console.log('yes it is printing after 2 seconds')
-                    return <Redirect to="/admin/dashboard"/>;           
-            },2000);
+    const performRedirect = () =>{
+      console.log('getaRedirect=',getaRedirect);
+      if(getaRedirect){
+        // return <Redirect to="/admin/dashboard"/>;
+        setTimeout(() =>{
+              console.log('yes it is printing after 2 seconds');
+              return <Redirect to="/admin/dashboard"/>;
+          },2000);
         }
     };
+
     // handleChange  is for what do we want to do , when somebody loads image
     // and everything.
     const handleChange =name => event =>{
@@ -221,8 +224,8 @@ const AddProduct = () => {
             Admin Home
             </Link>    
         <div className="row bg-dark text-white rounded">
+          {/* offset-md-2 it shifts 2 columns on the right hand side. */}
             <div className="col-md-8 offset-md-2">
-                {/* offset-md-2 it shifts 2 columns on the right hand side. */}
                 {successMessage()}
                 {errorMessage()}
                 {createProductForm()}
