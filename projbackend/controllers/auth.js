@@ -1,4 +1,4 @@
-// remember to name it same as the file in route for whom this controller
+// remember to name this same as the file in route for whom this controller
 // file is being made.
 
 // below variable should named as User because we exported User schema with same name.

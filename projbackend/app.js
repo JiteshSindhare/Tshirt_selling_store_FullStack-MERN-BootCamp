@@ -14,13 +14,14 @@ const userRoutes = require("./routes/user");// single "." is for current directo
 const categoryRoutes = require("./routes/category");
 const productRoutes = require("./routes/product");
 const orderRoutes = require("./routes/order");
+const stripeRoutes = require("./routes/stripepayment");
 /**
 mongoose.connect('URL', {useNewUrlParser: true,
  useUnifiedTopology: true});
- if using any other onlien serivce or database something like atlas or mlabs.
+ if using any other online serivce or database something like atlas or mlabs.
  then get that "URL" string from their website.
+ this URL is replace by process.env.DATABASE coz we are taking url from env.
  */
-
  //DB connection.
  mongoose.connect(process.env.DATABASE,{
      // this below lines helps in keeping db connection alive.
@@ -37,6 +38,7 @@ app.use(cookieParser());
 app.use(cors()); 
 
 //My Routes
+
 // since I want to explicitly mention API so I will mention api in route.
 app.use("/api",authRoutes); // since this is an authentication route
 // so all this routes will be coming form authRoutes(2nd argument)
@@ -49,6 +51,7 @@ app.use("/api",userRoutes);
 app.use("/api",categoryRoutes);
 app.use("/api",productRoutes);
 app.use("/api",orderRoutes);
+app.use("/api",stripeRoutes);
 
 //PORT
  const port =process.env.PORT || 8000;
