@@ -14,6 +14,7 @@ const userRoutes = require("./routes/user");// single "." is for current directo
 const categoryRoutes = require("./routes/category");
 const productRoutes = require("./routes/product");
 const orderRoutes = require("./routes/order");
+const paymentBRoutes = require("./routes/paymentBRoutes");
 /**
 mongoose.connect('URL', {useNewUrlParser: true,
  useUnifiedTopology: true});
@@ -49,6 +50,7 @@ app.use("/api",userRoutes);
 app.use("/api",categoryRoutes);
 app.use("/api",productRoutes);
 app.use("/api",orderRoutes);
+app.use("/api",paymentBRoutes);
 
 //PORT
  const port =process.env.PORT || 8000;

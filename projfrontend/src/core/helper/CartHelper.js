@@ -50,10 +50,14 @@ export const removeItemfromCart = (productId) => {
     return cart;
 };
 
-export const cartEmpty = (next) => {
+export const cartEmpty = next => {
     // to clear cart , this will be in handy after a payment is been made.
-    if(typeof windows !== undefined){
-        localStorage.removeItem("cart")
+    // next is because we need a callback coz once the cart is empty we might
+    // to redirect user somewhere or show a message or something.
+    if(typeof window !== undefined){
+        localStorage.removeItem("cart");
+        let cart = [];
+        localStorage.setItem("cart",JSON.stringify(cart));   
         next();
     }
-}
+};

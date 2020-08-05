@@ -16,5 +16,9 @@ export const createOrder = (userId, token, orderData) => {
     }).then(response => {
         return response.json();
     })
-    .catch(error =>console.log(error));
+    .catch(error =>{
+        console.log("Error is in creating order");
+        console.log(error);
+    });
+
 };
